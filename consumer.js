@@ -9,7 +9,8 @@ async function consumeMessage() {
     const channel = await connection.createChannel();
 
     // 3. Queue name
-    const queue = "hello";
+    // const queue = "hello";
+    const queue = "tasks";
 
     // 4. Ensure queue exists
     await channel.assertQueue(queue, {
@@ -21,7 +22,7 @@ async function consumeMessage() {
     // 5. Consume messages
     channel.consume(queue, (message) => {
 
-        throw new Error("Crash");
+        // throw new Error("Crash");
         console.log("Received:", message.content.toString());
         channel.ack(message);
 
